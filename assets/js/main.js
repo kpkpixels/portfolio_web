@@ -1,7 +1,18 @@
+//minhas funçoes//
+
+window.onload = function() {
+    homeBlob.classList.remove('home_blob_init');    
+    homeBlob.classList.add('home_blob');    
+
+};
+
+
+
 /*==================== MENU SHOW Y HIDDEN ====================*/
 const navMenu = document.getElementById('nav-menu'),
 navToggle = document.getElementById('nav-toggle'),
-navClose = document.getElementById('nav-close');
+navClose = document.getElementById('nav-close'),
+homeBlob = document.getElementById('home-blob');
 
 /*===== MENU SHOW =====*/
 /* Validate if constant exists */
