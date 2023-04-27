@@ -1,18 +1,18 @@
 //minhas funçoes//
+homeBlob = document.getElementById('home-blob');
+const skillPercentage = document.querySelectorAll('.skills_percentage');
 
 window.onload = function() {
     homeBlob.classList.remove('home_blob_init');    
     homeBlob.classList.add('home_blob');    
 
+    skillPercentage.forEach(n => n.classList.remove('skills0'));
 };
-
-
 
 /*==================== MENU SHOW Y HIDDEN ====================*/
 const navMenu = document.getElementById('nav-menu'),
 navToggle = document.getElementById('nav-toggle'),
-navClose = document.getElementById('nav-close'),
-homeBlob = document.getElementById('home-blob');
+navClose = document.getElementById('nav-close');
 
 /*===== MENU SHOW =====*/
 /* Validate if constant exists */
@@ -40,6 +40,24 @@ navLink.forEach(n => n.addEventListener('click', linkAction));
 
 
 /*==================== ACCORDION SKILLS ====================*/
+const skillsContent = document.getElementsByClassName('skills_content'),
+    skillsHeader = document.querySelectorAll(".skills_header");
+
+function toggleSkills(){
+    let itemClass = this.parentNode.className;
+
+    for (let i = 0; i < skillsContent.length; i++) {
+        skillsContent[i].className = "skills_content skills_close";        
+    }
+    if (itemClass === "skills_content skills_close"){
+        this.parentNode.className = "skills_content skills_open";
+    }
+}
+skillsHeader.forEach(element => {
+    element.addEventListener("click", toggleSkills);    
+});
+
+
 
 
 /*==================== QUALIFICATION TABS ====================*/
