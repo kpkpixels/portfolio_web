@@ -1,12 +1,9 @@
 //minhas funçoes//
 homeBlob = document.getElementById('home-blob');
-const skillPercentage = document.querySelectorAll('.skills_percentage');
 
 window.onload = function() {
     homeBlob.classList.remove('home_blob_init');    
     homeBlob.classList.add('home_blob');    
-
-    skillPercentage.forEach(n => n.classList.remove('skills0'));
 };
 
 /*==================== MENU SHOW Y HIDDEN ====================*/
@@ -44,23 +41,43 @@ const skillsContent = document.getElementsByClassName('skills_content'),
     skillsHeader = document.querySelectorAll(".skills_header");
 
 function toggleSkills(){
-    let itemClass = this.parentNode.className;
+    let itemClass = this.parentNode.className;    
 
     for (let i = 0; i < skillsContent.length; i++) {
-        skillsContent[i].className = "skills_content skills_close";        
+        skillsContent[i].className = "skills_content skills_close";
+        const skillPercentage = skillsContent[i].querySelectorAll('.skills_percentage');    
+        skillPercentage.forEach(n => n.classList.add('skills0'));    
     }
     if (itemClass === "skills_content skills_close"){
         this.parentNode.className = "skills_content skills_open";
+        const skillPercentage = this.parentNode.querySelectorAll('.skills_percentage');  
+        skillPercentage.forEach(n => n.classList.remove('skills0'));  
     }
 }
 skillsHeader.forEach(element => {
     element.addEventListener("click", toggleSkills);    
 });
-
-
-
-
 /*==================== QUALIFICATION TABS ====================*/
+const tabs = document.querySelectorAll("[data-target]"),
+tabConteudos = document.querySelectorAll("[data-content]");
+
+tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+        const target = document.querySelector(tab.dataset.target);
+
+        tabConteudos.forEach(tabConteudo => {
+            tabConteudo.classList.remove("qualification_active");
+        });
+        target.classList.add("qualification_active");
+        
+        tabs.forEach(t =>{
+            t.classList.remove("qualification_active");
+        });
+
+        tab.classList.remove("qualification_active");
+    });
+    
+});
 
 
 /*==================== SERVICES MODAL ====================*/
